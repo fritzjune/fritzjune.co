@@ -1,0 +1,13 @@
+{
+  "name": "fritz-june-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fritz June website: static pages + /api/lead serverless function (Vercel).",
+  "scripts": {
+    "dev": "node scripts/dev-server.js",
+    "test": "node --test tests/lead.test.js tests/activity.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

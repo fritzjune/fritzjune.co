@@ -1,0 +1,40 @@
+Where each logo in this folder came from (category | tool | file | source)
+Simple Icons: https://simpleicons.org (v16.37.0). Others: the company's own site or official CDN.
+chatgpt.svg: dark-mode colour switch removed so it stays black on the white tiles.
+
+AI & Automation | Claude | claude.svg | Simple Icons (claude), #D97757
+AI & Automation | ChatGPT | chatgpt.svg | chatgpt.com favicon.svg
+AI & Automation | Manus | manus.svg | manus.im icon.svg
+AI & Automation | Make.com | make.svg | Simple Icons (make), #6D00CC
+Design | Figma | figma.svg | Simple Icons (figma), #F24E1E
+Design | Canva | canva.png | static.canva.com apple-touch icon
+Video & Audio | HeyGen | heygen.svg | app.heygen.com favicon.svg
+Video & Audio | ElevenLabs | elevenlabs.svg | Simple Icons (elevenlabs), #000000
+Video & Audio | CapCut | capcut.png | capcut.com favicon (64px)
+Video & Audio | OpusClip | opusclip.png | opus.pro webclip icon
+UGC & Marketing | Zeely | zeely.png | zeely.ai favicon 512
+UGC & Marketing | Billo | billo.png | billo.app favicon 192
+CRM & Email | GoHighLevel | gohighlevel.png | gohighlevel.com favicon (32px, largest published)
+CRM & Email | HubSpot | hubspot.svg | Simple Icons (hubspot), #FF7A59
+CRM & Email | ActiveCampaign | activecampaign.png | activecampaign.com favicon 192
+CRM & Email | Mailchimp | mailchimp.svg | Simple Icons (mailchimp), #1B1B1B (brand #FFE01B too light on white)
+CRM & Email | Gmail | gmail.svg | Simple Icons (gmail), #EA4335
+CRM & Email | Outlook | outlook.svg | Microsoft Fluent brand icons (res.cdn.office.net)
+Project Management | Monday.com | monday.png | monday.com 256 icon
+Project Management | ClickUp | clickup.svg | Simple Icons (clickup), #7B68EE
+Project Management | Notion | notion.svg | Simple Icons (notion), #000000
+Communication | Slack | slack.png | slack-edge.com marketing icon 256
+Communication | WhatsApp | whatsapp.svg | Simple Icons (whatsapp), #25D366
+Communication | Microsoft Teams | teams.svg | Microsoft Fluent brand icons (res.cdn.office.net)
+Websites & Platforms | Teachable | teachable.png | teachable.com webclip icon
+Websites & Platforms | Kajabi | kajabi.png | kajabi.com icon
+Websites & Platforms | WordPress | wordpress.svg | Simple Icons (wordpress), #21759B
+Websites & Platforms | GHL | gohighlevel.png | same file as GoHighLevel
+Websites & Platforms | Wix | wix.svg | Simple Icons (wix), #0C6EFC
+Websites & Platforms | Systeme.io | systemeio.png | systeme.io favicon (64px)
+Development & Hosting | GitHub | github.svg | Simple Icons (github), #181717
+Development & Hosting | Vercel | vercel.svg | Simple Icons (vercel), #000000
+Development & Hosting | Firebase | firebase.svg | Simple Icons (firebase), #DD2C00
+Development & Hosting | Netlify | netlify.svg | Simple Icons (netlify), #00C7B7
+Productivity | Google Workspace | google-workspace.svg | Simple Icons (google), #4285F4
+Productivity | Microsoft Office | office.svg | Microsoft Fluent brand icons (res.cdn.office.net)

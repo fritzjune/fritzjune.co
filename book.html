@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Book a call | Fritz June</title>
+<meta name="description" content="Book a 30-minute call with Fritz June, marketing operations and executive partner for founders.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20dark.svg?tr=w-64" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/png" href="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20light.svg?tr=w-64" media="(prefers-color-scheme: dark)">
+<link rel="apple-touch-icon" href="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20dark.svg?tr=w-180">
+<link rel="preconnect" href="https://ik.imagekit.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://calendar.google.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="page-book">
+
+<a class="skip" href="#calendar">Skip to the calendar</a>
+
+<header class="nav is-light" id="nav">
+  <a href="index.html" class="nav__logo" aria-label="Fritz June, home"><img class="nav__mark nav__mark--light" src="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20light.svg?tr=w-96" width="36" height="36" alt=""><img class="nav__mark nav__mark--dark" src="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20dark.svg?tr=w-96" width="36" height="36" alt=""><span class="nav__name">FRITZJUNE</span></a>
+  <nav class="nav__links" aria-label="Main">
+    <a href="index.html#different">The difference</a>
+    <a href="index.html#what">What I do</a>
+    <a href="index.html#work">Work</a>
+    <a href="index.html#fit">Is it you?</a>
+    <a href="index.html#faq">Questions</a>
+  </nav>
+  <a href="index.html" class="btn btn--small btn--ghost">Back to site</a>
+</header>
+
+<main class="book">
+  <section class="book__intro">
+    <img class="book__portrait" src="frames/poster.jpg" alt="Fritz June standing with arms crossed" width="1280" height="720">
+    <div class="book__copy">
+      <h1 class="book__h">Pick a time. Bring the mess.</h1>
+      <p class="book__lede">30 minutes on your business, where it's stuck, and what you'd do with ten spare hours a week.</p>
+
+      <h2 class="book__sub">On the call, we'll</h2>
+      <ul class="book__list">
+        <li>Look at how your marketing, ops and priorities connect right now</li>
+        <li>Find the one or two threads costing you the most time</li>
+        <li>Work out whether a partner is the right fix, or something else is</li>
+      </ul>
+
+      <p class="book__note">No pitch deck. If I'm not the right fit, I'll say so and point you somewhere better.</p>
+    </div>
+  </section>
+
+  <section class="book__cal" id="calendar" aria-label="Booking calendar">
+    <div class="calframe">
+      <div class="calframe__bar" aria-hidden="true">
+        <span></span><span></span><span></span>
+        <p>Choose a time that works for you</p>
+      </div>
+      <div class="calframe__body">
+        <div class="calframe__loading" id="calLoading">
+          <svg class="loader__lines" viewBox="0 0 200 60" aria-hidden="true">
+            <circle cx="10" cy="30" r="5"/><circle cx="100" cy="10" r="5"/><circle cx="100" cy="50" r="5"/><circle cx="190" cy="30" r="5"/>
+            <path d="M10 30 L100 10 L190 30 L100 50 Z"/>
+          </svg>
+          <p>Loading available times</p>
+        </div>
+        <iframe
+          id="calIframe"
+          title="Book a call with Fritz June (Google Calendar)"
+          src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3VUJRHhF4htOSqYp8bwoeivYfyibeT8FflF67uxYPJZ821e9E0u4hz8POdU6iWQzNtSOT2lhGn?gv=true"
+          loading="eager"
+          frameborder="0"></iframe>
+      </div>
+    </div>
+    <p class="book__fallback">Calendar not loading? <a href="https://calendar.app.google/9r2QdnguEdh4SvNaA" target="_blank" rel="noopener">Open the booking page in a new tab</a>. Not ready to book? <a href="#message">Send a message instead</a>.</p>
+  </section>
+</main>
+
+<!-- ========== ENQUIRY FORM (posts to /api/lead, which forwards to Make.com) ========== -->
+<section class="enquiry" id="message" aria-labelledby="enqTitle">
+  <div class="wrap enquiry__grid">
+    <div class="enquiry__intro">
+      <h2 class="h2" id="enqTitle">Not ready to book? Tell me what's going on.</h2>
+      <p class="lede">Takes about two minutes. I read every message myself and reply by email.</p>
+      <ul class="enquiry__points">
+        <li>Prefer a set time? Use the calendar above and it's booked straight away.</li>
+        <li>Sending this form is a request, not a booking. I'll email you to confirm a time.</li>
+      </ul>
+    </div>
+
+    <form class="form" id="enquiryForm" novalidate>
+      <p class="form__key"><span class="req" aria-hidden="true">*</span> Required</p>
+
+      <fieldset class="form__group">
+        <legend class="form__legend">About you</legend>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="f-name">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-name" type="text" name="full_name" autocomplete="name" required minlength="2" maxlength="120" placeholder="Jordan Rivera" aria-describedby="e-full_name">
+            <p class="field__error" id="e-full_name"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-email">Email address <span class="req" aria-hidden="true">*</span></label>
+            <input id="f-email" type="email" name="email" autocomplete="email" required maxlength="200" placeholder="you@company.com" aria-describedby="e-email">
+            <p class="field__error" id="e-email"></p>
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="f-phone">Phone <em>optional</em></label>
+            <input id="f-phone" type="tel" name="phone" autocomplete="tel" maxlength="30" placeholder="+1 555 010 2030" aria-describedby="e-phone">
+            <p class="field__error" id="e-phone"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-company">Company <em>optional</em></label>
+            <input id="f-company" type="text" name="company" autocomplete="organization" maxlength="160" placeholder="Company name or website">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__group">
+        <legend class="form__legend">What you need</legend>
+        <div class="field" role="radiogroup" aria-labelledby="l-service" aria-describedby="e-service">
+          <p class="field__label" id="l-service">What would you like help with? <span class="req" aria-hidden="true">*</span></p>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="service" value="Marketing operations" required><span>Marketing operations</span></label>
+            <label class="chip"><input type="radio" name="service" value="Operations"><span>Operations</span></label>
+            <label class="chip"><input type="radio" name="service" value="Executive partnership"><span>Executive partnership</span></label>
+            <label class="chip"><input type="radio" name="service" value="Full partnership"><span>All three, joined up</span></label>
+            <label class="chip"><input type="radio" name="service" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+          <p class="field__error" id="e-service"></p>
+        </div>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="f-team">Team size <em>optional</em></label>
+            <select id="f-team" name="team_size">
+              <option value="">Choose one</option>
+              <option value="Just me">Just me</option>
+              <option value="2-10">2 to 10</option>
+              <option value="11-50">11 to 50</option>
+              <option value="50+">50+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-budget">Monthly budget <em>optional</em></label>
+            <select id="f-budget" name="budget">
+              <option value="">Choose one</option>
+              <option>Under $1,500 / month</option>
+              <option>$1,500 to $3,000 / month</option>
+              <option>$3,000 to $5,000 / month</option>
+              <option>$5,000+ / month</option>
+              <option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__group">
+        <legend class="form__legend">A good time to talk <em>optional</em></legend>
+        <div class="form__row">
+          <div class="field">
+            <label class="field__label" for="f-date">Preferred date</label>
+            <input id="f-date" type="date" name="preferred_date" aria-describedby="e-preferred_date">
+            <p class="field__error" id="e-preferred_date"></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="f-time">Preferred time</label>
+            <select id="f-time" name="preferred_time" aria-describedby="h-time">
+              <option value="">Any time</option>
+              <option>Morning</option>
+              <option>Midday</option>
+              <option>Afternoon</option>
+              <option>Evening</option>
+            </select>
+            <p class="field__hint" id="h-time">In your time zone<span id="tzLabel"></span>.</p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="form__group">
+        <legend class="form__legend">What's going on</legend>
+        <div class="field">
+          <label class="field__label" for="f-message">Tell me about it <span class="req" aria-hidden="true">*</span></label>
+          <textarea id="f-message" name="message" rows="6" required minlength="10" maxlength="4000" placeholder="Where things are stuck, what you've tried, and what you'd do with ten hours back each week." aria-describedby="e-message c-message"></textarea>
+          <div class="field__meta"><p class="field__error" id="e-message"></p><p class="field__count" id="c-message">0 / 4000</p></div>
+        </div>
+      </fieldset>
+
+      <div class="field field--consent">
+        <label class="consent">
+          <input type="checkbox" name="consent" required aria-describedby="e-consent">
+          <span>I agree to Fritz June storing these details to reply to my enquiry. They won't be shared or added to a mailing list. <span class="req" aria-hidden="true">*</span></span>
+        </label>
+        <p class="field__error" id="e-consent"></p>
+      </div>
+
+      <!-- Spam trap: hidden from people, bots fill it in -->
+      <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="website_url" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="form__foot">
+        <button type="submit" class="btn btn--big form__submit"><span class="form__spinner" aria-hidden="true"></span><span class="form__submit-text">Send my enquiry</span></button>
+        <p class="form__status" id="formStatus" role="alert"></p>
+      </div>
+    </form>
+
+    <div class="form__done" id="formDone" hidden tabindex="-1">
+      <h3>Got it. Your enquiry is in.</h3>
+      <p>This isn't a confirmed booking yet. I'll email <strong id="doneEmail">you</strong> to confirm a time or ask a follow-up question.</p>
+      <p>Want a time locked in now? <a href="#calendar">Book straight into the calendar</a>.</p>
+      <p class="form__ref">Reference: <span id="doneRef"></span></p>
+      <button type="button" class="btn btn--ghost-dark" id="sendAnother">Send another enquiry</button>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <a class="foot__brand" href="index.html" aria-label="fritzjune.co, back to the start"><img src="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/dark%20wordmark.svg?tr=w-640" width="320" height="60" alt="fritzjune.co" loading="lazy"></a>
+  <p class="foot__line">Marketing operations and executive partner for founders.</p>
+  <p><a href="index.html">Back to the start</a></p>
+</footer>
+
+<script>
+  // Hide the loading state once Google's scheduler has loaded.
+  (function () {
+    var f = document.getElementById("calIframe"), l = document.getElementById("calLoading");
+    function done() { l.classList.add("is-done"); }
+    f.addEventListener("load", done);
+    setTimeout(done, 6000);
+  })();
+</script>
+<script src="form.js"></script>
+<script src="activity.js" defer></script>
+<script src="music.js" defer></script>
+</body>
+</html>
