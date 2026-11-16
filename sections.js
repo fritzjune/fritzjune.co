@@ -180,6 +180,7 @@
     [document.getElementById("shift"), () => { reveals.filter(r => r.h.closest("#shift")).forEach(runReveal); runShift(); }],
     [document.getElementById("work"), () => reveals.filter(r => r.h.closest("#work")).forEach(runReveal)],
     [document.getElementById("tools"), () => reveals.filter(r => r.h.closest("#tools")).forEach(runReveal)],
+    [document.getElementById("about"), () => reveals.filter(r => r.h.closest("#about")).forEach(runReveal)],
     [document.getElementById("how"), () => { reveals.filter(r => r.h.closest("#how")).forEach(runReveal); runSteps(); }]
   ];
   let queued = false;
@@ -193,18 +194,4 @@
   if (document.fonts) document.fonts.ready.then(request);
   // run every job once so off-screen sections start in their "before" state
   jobs.forEach(([sec, fn]) => sec && fn());
-
-  // ---------- Skills: staggered fade + slide up, once, when the list scrolls into view ----------
-  const skills = document.querySelector(".skills");
-  if (skills && "IntersectionObserver" in window) {
-    const r = skills.getBoundingClientRect();
-    if (r.top > innerHeight) {                      // only hide it if it's still below the fold
-      skills.classList.add("is-armed");
-      new IntersectionObserver(([e], obs) => {
-        if (!e.isIntersecting) return;
-        skills.classList.add("is-in");
-        obs.disconnect();
-      }, { threshold: 0.15 }).observe(skills.querySelector(".skills__list"));
-    }
-  }
 })();

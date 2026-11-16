@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "node scripts/dev-server.js",
     "build": "echo 'Static build ready'",
+    "lint": "node --check main.js && node --check sections.js && node --check work.js && node --check about.js && node --check clocks.js && node --check activity.js && node --check form.js",
     "test": "node --test tests/lead.test.js tests/activity.test.js"
   },
   "engines": {

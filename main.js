@@ -163,7 +163,7 @@
 
   // ---------- Nav colour ----------
   // Nav goes light over chalk sections, stays transparent over dark ones.
-  const darkZones = [film, document.getElementById("fit"), document.getElementById("work"), document.getElementById("book")].filter(Boolean);
+  const darkZones = [film, document.getElementById("fit"), document.getElementById("work"), document.getElementById("about"), document.getElementById("book")].filter(Boolean);
   const navObserver = () => {
     const y = scrollY + 40;
     const overDark = darkZones.some(z => y >= z.offsetTop && y < z.offsetTop + z.offsetHeight);
