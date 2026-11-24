@@ -1,9 +1,10 @@
 /* Background music with a pause/play control at the bottom left.
-   Browsers only allow sound after a click, tap or key press (not scrolling), so the track
-   starts softly on the visitor's first interaction. If they pause it, that choice is remembered. */
+   The track tries to start as soon as the page loads, at no more than 30% volume. Browsers only allow
+   sound after a click, tap or key press (not scrolling), so if autoplay is blocked it starts softly on the
+   visitor's first interaction instead. If they pause it, that choice is remembered. */
 (() => {
   const SRC = "https://ik.imagekit.io/jnj5x9prn/HOLD%20THE%20THREAD.mp3";
-  const VOLUME = 0.35;
+  const VOLUME = 0.3;             // hard cap: never louder than 30%
   const PREF = "fj-music";        // localStorage: "off" once the visitor pauses
   const POS = "fj-music-pos";     // sessionStorage: resume point when moving between pages
 
@@ -39,7 +40,7 @@
     const from = audio.volume, start = performance.now();
     const step = t => {
       const p = Math.min(1, (t - start) / ms);
-      audio.volume = Math.max(0, Math.min(1, from + (target - from) * p));
+      audio.volume = Math.max(0, Math.min(VOLUME, from + (target - from) * p));
       if (p < 1) fadeRaf = requestAnimationFrame(step); else if (done) done();
     };
     fadeRaf = requestAnimationFrame(step);
@@ -83,7 +84,12 @@
   };
   const events = ["pointerdown", "keydown", "touchend"];
   const removeFirstTouch = () => events.forEach(ev => removeEventListener(ev, firstTouch, true));
-  if (ls.get(PREF) !== "off") events.forEach(ev => addEventListener(ev, firstTouch, true));
+  if (ls.get(PREF) !== "off") {
+    events.forEach(ev => addEventListener(ev, firstTouch, true));
+    // Try to start as soon as the visitor lands. Browsers often block this until a first click/tap/key;
+    // if so, play() fails quietly and the listeners above start the music on that first interaction.
+    play();
+  }
 
   // ---------- Be polite ----------
   document.addEventListener("visibilitychange", () => {   // quiet while the tab is in the background

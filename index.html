@@ -31,17 +31,6 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- Loader -->
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader__inner">
-    <svg class="loader__lines" viewBox="0 0 200 60" aria-hidden="true">
-      <circle cx="10" cy="30" r="5"/><circle cx="100" cy="10" r="5"/><circle cx="100" cy="50" r="5"/><circle cx="190" cy="30" r="5"/>
-      <path d="M10 30 L100 10 L190 30 L100 50 Z"/>
-    </svg>
-    <p class="loader__text">Connecting the moving pieces <span id="loaderPct">0</span>%</p>
-  </div>
-</div>
-
 <!-- Nav -->
 <header class="nav" id="nav">
   <a href="#top" class="nav__logo" aria-label="Fritz June, back to top"><img class="nav__mark nav__mark--light" src="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20light.svg?tr=w-96" width="36" height="36" alt=""><img class="nav__mark nav__mark--dark" src="https://ik.imagekit.io/jnj5x9prn/Public%20Asset/FJ%20Logo/favicon%20dark.svg?tr=w-96" width="36" height="36" alt=""><span class="nav__name">FRITZJUNE</span></a>
@@ -115,19 +104,36 @@
     <h2 class="h2 h2--duo" data-reveal>You shouldn't have to hand me a plan<br>to get started.</h2>
     <p class="lede">I look at what's going on. I pick up what's useful. I tell you what I did and why. If something doesn't make sense, I'll say so. If something keeps breaking, I'll fix it so it stops. You get an update, not a list of questions.</p>
 
-    <div class="switch" role="group" aria-label="Compare a VA with a partner">
-      <button class="switch__opt is-on" data-mode="va" aria-pressed="true">Another VA</button>
-      <button class="switch__opt" data-mode="partner" aria-pressed="false">Fritz</button>
-      <span class="switch__thumb" aria-hidden="true"></span>
+    <div class="cmp" id="cmp">
+      <div class="cmp__scan" aria-hidden="true"><i></i></div>
+      <ol class="cmp__list">
+        <li class="cmp__row">
+          <span class="cmp__lab" aria-hidden="true"><b>Another VA</b><b>Fritz</b></span>
+          <p class="cmp__va" data-label="Another VA"><span class="sr-only">Another VA: </span><span class="cmp__t">Takes the task you assigned.</span></p>
+          <p class="cmp__fritz" data-label="Fritz"><span class="sr-only">Fritz: </span><span class="cmp__t">Asks what the task is actually for.</span></p>
+        </li>
+        <li class="cmp__row">
+          <span class="cmp__lab" aria-hidden="true"><b>Another VA</b><b>Fritz</b></span>
+          <p class="cmp__va" data-label="Another VA"><span class="sr-only">Another VA: </span><span class="cmp__t">Waits for your next instruction.</span></p>
+          <p class="cmp__fritz" data-label="Fritz"><span class="sr-only">Fritz: </span><span class="cmp__t">Spots what's next before you do.</span></p>
+        </li>
+        <li class="cmp__row">
+          <span class="cmp__lab" aria-hidden="true"><b>Another VA</b><b>Fritz</b></span>
+          <p class="cmp__va" data-label="Another VA"><span class="sr-only">Another VA: </span><span class="cmp__t">Posts the content on schedule.</span></p>
+          <p class="cmp__fritz" data-label="Fritz"><span class="sr-only">Fritz: </span><span class="cmp__t">Checks it lines up with the launch, the offer and the inbox.</span></p>
+        </li>
+        <li class="cmp__row">
+          <span class="cmp__lab" aria-hidden="true"><b>Another VA</b><b>Fritz</b></span>
+          <p class="cmp__va" data-label="Another VA"><span class="sr-only">Another VA: </span><span class="cmp__t">Reports that they were busy.</span></p>
+          <p class="cmp__fritz" data-label="Fritz"><span class="sr-only">Fritz: </span><span class="cmp__t">Reports what's done, and what it moved.</span></p>
+        </li>
+        <li class="cmp__row">
+          <span class="cmp__lab" aria-hidden="true"><b>Another VA</b><b>Fritz</b></span>
+          <p class="cmp__va" data-label="Another VA"><span class="sr-only">Another VA: </span><span class="cmp__t">You're still the one connecting the dots.</span></p>
+          <p class="cmp__fritz" data-label="Fritz"><span class="sr-only">Fritz: </span><span class="cmp__t">You get your head back for the big calls.</span></p>
+        </li>
+      </ol>
     </div>
-
-    <ul class="compare" id="compare" data-mode="va" aria-live="polite">
-      <li><span data-va="Takes the task you assigned." data-partner="Asks what the task is actually for.">Takes the task you assigned.</span></li>
-      <li><span data-va="Waits for your next instruction." data-partner="Spots what's next before you do.">Waits for your next instruction.</span></li>
-      <li><span data-va="Posts the content on schedule." data-partner="Checks it lines up with the launch, the offer and the inbox.">Posts the content on schedule.</span></li>
-      <li><span data-va="Reports that they were busy." data-partner="Reports what's done, and what it moved.">Reports that they were busy.</span></li>
-      <li><span data-va="You're still the one connecting the dots." data-partner="You get your head back for the big calls.">You're still the one connecting the dots.</span></li>
-    </ul>
   </div>
 </section>
 
@@ -145,27 +151,53 @@
     <h2 class="h2">Every business is at a different point. I start there.</h2>
     <p class="lede">Marketing, operations or executive support. I step into whichever needs the most attention today.</p>
 
-    <div class="web" id="web">
-      <svg class="web__lines" id="webLines" aria-hidden="true"></svg>
+    <div class="pgo" id="pgo">
+      <div class="pgo__sticky">
+        <div class="pgo__card">
+          <div class="pgo__text">
+            <ol class="pgo__rail" aria-hidden="true"><li class="is-on"><b>01</b></li><li><b>02</b></li><li><b>03</b></li></ol>
+            <div class="pgo__steps">
+              <article class="pstep">
+                <span class="pstep__num" aria-hidden="true">01</span>
+                <h3 class="pstep__title">Marketing's rolling, the backend's catching up.</h3>
+                <p class="pstep__kicker">I step in with <b>Operations</b></p>
+                <p class="pstep__body">I build the operations behind it: SOPs people actually follow, tools that connect, clean handoffs, and project tracking.</p>
+                <ul class="pstep__chips" aria-hidden="true"><li>SOPs</li><li>Connected tools</li><li>Clean handoffs</li><li>Project tracking</li></ul>
+              </article>
+              <article class="pstep">
+                <span class="pstep__num" aria-hidden="true">02</span>
+                <h3 class="pstep__title">The operations run, but marketing's still on the list.</h3>
+                <p class="pstep__kicker">I step in with <b>Marketing</b></p>
+                <p class="pstep__body">I take marketing: campaigns, content, email, funnels, and the reporting that shows what's working.</p>
+                <ul class="pstep__chips" aria-hidden="true"><li>Campaigns</li><li>Content</li><li>Email</li><li>Funnels</li><li>Reporting</li></ul>
+              </article>
+              <article class="pstep">
+                <span class="pstep__num" aria-hidden="true">03</span>
+                <h3 class="pstep__title">Both are moving. You'd like someone running your side of the table.</h3>
+                <p class="pstep__kicker">I step in with <b>Executive support</b></p>
+                <p class="pstep__body">I take your calendar, inbox, meeting prep and follow-ups, so you walk in briefed and walk out with next steps.</p>
+                <ul class="pstep__chips" aria-hidden="true"><li>Calendar</li><li>Inbox</li><li>Meeting prep</li><li>Follow-ups</li></ul>
+              </article>
+            </div>
+          </div>
 
-      <button class="node" data-node="mkt" aria-expanded="false">
-        <span class="node__title">Marketing's rolling, the backend's catching up.</span>
-        <span class="node__body">I build the operations behind it: SOPs people actually follow, tools that connect, clean handoffs, and project tracking.</span>
-      </button>
-      <button class="node" data-node="ops" aria-expanded="false">
-        <span class="node__title">The operations run, but marketing's still on the list.</span>
-        <span class="node__body">I take marketing: campaigns, content, email, funnels, and the reporting that shows what's working.</span>
-      </button>
-      <button class="node" data-node="exec" aria-expanded="false">
-        <span class="node__title">Both are moving. You'd like someone running your side of the table.</span>
-        <span class="node__body">I take your calendar, inbox, meeting prep and follow-ups, so you walk in briefed and walk out with next steps.</span>
-      </button>
-
-      <div class="hub" aria-hidden="true">
-        <span>Fritz</span>
+          <div class="pgo__scene" aria-hidden="true">
+            <div class="pgo__glow"></div>
+            <div class="scene">
+              <div class="plane">
+                <i class="ring ring--out"></i><i class="ring ring--mid"></i><i class="ring ring--track"></i><i class="ring ring--prog"></i>
+                <i class="beam" style="--a:0deg"></i><i class="beam" style="--a:120deg"></i><i class="beam" style="--a:240deg"></i>
+                <div class="arm" style="--a:0deg"><div class="sat"><span class="sat__dot"></span><span class="sat__label">Operations</span></div></div>
+                <div class="arm" style="--a:120deg"><div class="sat"><span class="sat__dot"></span><span class="sat__label">Marketing</span></div></div>
+                <div class="arm" style="--a:240deg"><div class="sat"><span class="sat__dot"></span><span class="sat__label">Executive support</span></div></div>
+                <div class="hub"><span>Fritz</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="pgo__cue" aria-hidden="true"><span></span>Keep scrolling</p>
+        </div>
       </div>
     </div>
-    <p class="hint">Tap a piece to see what's in it.</p>
     <div class="what__callout">
       <p class="what__callout-text"><strong>Not sure which one that is?</strong> That's what the call is for.</p>
       <a href="book.html" class="btn btn--laser js-book">Book a call</a>
@@ -322,6 +354,11 @@
       <li class="tool" tabindex="0" aria-label="Google Workspace"><img class="tool__img" src="assets/tools/google-workspace.svg" alt="Google Workspace" width="24" height="24" loading="lazy" decoding="async"><span class="tool__name" aria-hidden="true">Google Workspace</span></li>
       <li class="tool" tabindex="0" aria-label="Microsoft Office"><img class="tool__img" src="assets/tools/office.svg" alt="Microsoft Office" width="24" height="24" loading="lazy" decoding="async"><span class="tool__name" aria-hidden="true">Microsoft Office</span></li>
     </ul>
+    <div class="tools__more">
+      <span class="tools__plus" aria-hidden="true">+</span>
+      <p><strong>Don't see yours?</strong> Tell me what you use. I'll learn it.</p>
+      <a href="book.html" class="tools__link js-book">Book a call</a>
+    </div>
   </div>
 </section>
 

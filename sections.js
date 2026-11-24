@@ -37,25 +37,47 @@
     h.classList.toggle("is-done", p >= 0.999);
   }
 
-  // ---------- 1. VA vs partner: rows slide in from the left ----------
-  const compareRows = [...document.querySelectorAll("#compare li")];
+  // ---------- 1. VA vs Fritz: a laser scan travels down the list; every row it passes upgrades ----------
+  const cmp = document.getElementById("cmp");
+  const cmpScan = cmp.querySelector(".cmp__scan");
+  const cmpRows = [...cmp.querySelectorAll(".cmp__row")];
   function runCompare() {
-    compareRows.forEach((li, i) => {
-      const p = ease(prog(li, 1.0, 0.72 - i * 0.01));
-      li.style.opacity = (0.15 + 0.85 * p).toFixed(3);
-      li.style.transform = `translateX(${((1 - p) * -60).toFixed(1)}px)`;
+    const scanY = cmpScan.getBoundingClientRect().top;
+    cmpRows.forEach((li, i) => {
+      const r = li.getBoundingClientRect();
+      const q = clamp((scanY - r.top) / (r.height * 0.9));           // 0 = scan not here yet, 1 = scan has passed
+      const q1 = ease(clamp(q * 2.2));                                 // old line struck out
+      const q2 = ease(clamp((q - 0.25) / 0.75));                       // new line wipes in
+      li.style.setProperty("--strike", q1.toFixed(3));
+      li.style.setProperty("--q2", q2.toFixed(3));
+      const enter = ease(prog(li, 1.0, 0.72 - i * 0.01));              // rows tilt up into place
+      li.style.opacity = (0.15 + 0.85 * enter).toFixed(3);
+      li.style.transform = `translateY(${((1 - enter) * 26).toFixed(1)}px)`;
     });
   }
 
-  // ---------- 2. Three jobs: words drift together, pieces fly in and connect ----------
+  // ---------- 2. Three jobs: a pinned progression ----------
+  // The section stays pinned while you scroll. Each situation takes its turn, the 3D orbit turns so the matching
+  // area comes to the front, and a ring fills as each one is connected, until all three run through Fritz.
   const whatH = document.querySelector("#what .h2");
   const whatWords = splitWords(whatH);
-  const web = document.getElementById("web");
-  const nodes = [...web.querySelectorAll(".node")];
-  const hub = web.querySelector(".hub");
-  const lines = () => [...document.querySelectorAll("#webLines line")];
-  const SCATTER = { mkt: [-160, 80, -9], ops: [180, -30, 8], exec: [-40, 180, -5] };
-  let webSettled = false;
+  const pgo = document.getElementById("pgo");
+  const pSteps = [...pgo.querySelectorAll(".pstep")];
+  const pNums = pSteps.map(el => el.querySelector(".pstep__num"));
+  const pSats = [...pgo.querySelectorAll(".sat")];
+  const pBeams = [...pgo.querySelectorAll(".beam")];
+  const pRail = [...pgo.querySelectorAll(".pgo__rail li")];
+  const pCue = pgo.querySelector(".pgo__cue");
+  const pScene = pgo.querySelector(".pgo__scene");
+  const setV = (el, k, v) => el.style.setProperty(k, v);
+  const win = (x, a, b) => ease(clamp((x - a) / (b - a)));      // eased 0 to 1 across [a, b]
+  function sizePgo() {
+    const k = mobile() ? 1 : 1.04;
+    setV(pgo, "--S", Math.max(230, Math.min(pScene.clientWidth * k, 720)) + "px");
+  }
+  sizePgo();
+  addEventListener("resize", sizePgo);
+
   function runWhat() {
     // headline: words start spread out and slide into one sentence
     const hp = ease(prog(whatH, 0.95, 0.45));
@@ -65,28 +87,40 @@
       w.style.opacity = (0.2 + 0.8 * hp).toFixed(3);
     });
 
-    // pieces
-    const p = prog(web, 0.98, 0.42);
-    const e = ease(clamp(p / 0.8));
-    nodes.forEach((n, i) => {
-      let [x, y, r] = SCATTER[n.dataset.node];
-      if (mobile()) { x = i % 2 ? 70 : -70; y = 0; r = r / 2; }
-      if (e >= 1) { n.style.transform = ""; n.style.opacity = ""; return; }   // hand back to :hover styles
-      n.style.transform = `translate(${(x * (1 - e)).toFixed(1)}px, ${(y * (1 - e)).toFixed(1)}px) rotate(${(r * (1 - e)).toFixed(2)}deg)`;
-      n.style.opacity = (0.25 + 0.75 * e).toFixed(3);
-    });
-    const hubP = ease(clamp((p - 0.2) / 0.6));
-    hub.style.transform = `scale(${(0.3 + 0.7 * hubP).toFixed(3)}) rotate(${((1 - hubP) * -90).toFixed(1)}deg)`;
-    hub.classList.toggle("is-live", p >= 0.999);
+    const r = pgo.getBoundingClientRect();
+    const total = pgo.offsetHeight - innerHeight;
+    const p = clamp(-r.top / total);                 // 0 to 1 while pinned
+    const s = clamp(p / 0.82) * 3;                   // 0 to 3: one unit per situation
+    const e = clamp((p - 0.82) / 0.18);              // last stretch: the loop closes
+    const idx = win(s, 0.72, 1.28) + win(s, 1.72, 2.28);   // which area faces front (eased between steps)
+    const enter = ease(clamp((innerHeight * 0.95 - r.top) / (innerHeight * 0.5)));
 
-    // lines draw in once the pieces are close, and follow the pieces while they move
-    const lp = ease(clamp((p - 0.45) / 0.55));
-    if (window.fjLayoutLines && (!webSettled || p < 1)) window.fjLayoutLines();
-    webSettled = p >= 1;
-    lines().forEach((l, i) => {
-      l.setAttribute("pathLength", "1");
-      l.style.strokeDashoffset = (1 - clamp(lp * 1.4 - i * 0.08)).toFixed(3);
+    setV(pgo, "--in", enter.toFixed(3));
+    setV(pgo, "--rz", (90 - 120 * idx).toFixed(2) + "deg");
+    setV(pgo, "--c", (idx / 3 + e / 3).toFixed(4));
+    pgo.classList.toggle("is-live", e >= 0.999);
+
+    pSteps.forEach((el, k) => {
+      const inn = k === 0 ? 1 : win(s, k - 0.1, k + 0.2);
+      const out = k === 2 ? 0 : win(s, k + 0.7, k + 1);
+      const vis = inn * (1 - out);
+      const y = inn < 1 ? (1 - inn) * 46 : -out * 46;
+      el.style.opacity = vis.toFixed(3);
+      el.style.transform = `translateY(${y.toFixed(1)}px)`;
+      el.style.filter = vis > 0.99 ? "" : `blur(${((1 - vis) * 8).toFixed(1)}px)`;
+      el.style.pointerEvents = vis > 0.5 ? "" : "none";
+      pNums[k].style.transform = `translateY(${((k + 0.5 - s) * 34).toFixed(1)}px)`;
     });
+    pSats.forEach((el, k) => setV(el, "--w", clamp(1 - Math.abs(idx - k) * 1.4).toFixed(3)));
+    pBeams.forEach((el, k) => {
+      setV(el, "--d", (k === 0 ? enter : win(idx, k - 0.9, k)).toFixed(3));
+      setV(el, "--w", clamp(1 - Math.abs(idx - k) * 1.4).toFixed(3));
+    });
+    pRail.forEach((el, k) => {
+      el.classList.toggle("is-on", idx >= k - 0.35);
+      setV(el, "--f", clamp(idx - k).toFixed(3));
+    });
+    pCue.style.opacity = (1 - clamp(s / 0.25)).toFixed(3);
   }
 
   // ---------- 3. Is this you? cards deal in, ticks spark, tally rolls ----------
